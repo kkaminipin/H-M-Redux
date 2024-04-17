@@ -1,12 +1,14 @@
 // import React from 'react';
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 
-const ProductDetail = ({ loginStatus }) => {
+const ProductDetail = () => {
   const { id } = useParams();
   const [productDetail, setProductDetail] = useState({});
+
+  const loginStatus = useSelector((state) => state.loginStatus);
 
   const getProdouctDetail = async () => {
     const url = `https://my-json-server.typicode.com/kkaminipin/H-M/products/${id}`;
@@ -30,7 +32,5 @@ const ProductDetail = ({ loginStatus }) => {
     <Navigate to='/login' />
   );
 };
-ProductDetail.propTypes = {
-  loginStatus: PropTypes.bool.isRequired,
-};
+
 export default ProductDetail;

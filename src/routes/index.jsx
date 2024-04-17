@@ -8,11 +8,8 @@ import Products from '../pages/Products';
 import ErrorPage from '../pages/ErrorPage';
 import ProductDetail from '../pages/ProductDetail';
 import Login from '../pages/Login';
-import { useState } from 'react';
 
 const Routers = () => {
-  const [loginStatus, setLoginStatus] = useState(false);
-
   const router = createBrowserRouter([
     {
       path: '/',
@@ -22,9 +19,7 @@ const Routers = () => {
         {
           index: true,
           path: '/',
-          element: (
-            <Home loginStatus={loginStatus} setLoginStatus={setLoginStatus} />
-          ),
+          element: <Home />,
         },
         {
           path: '/products',
@@ -32,13 +27,13 @@ const Routers = () => {
         },
         {
           path: '/products/:id',
-          element: <ProductDetail loginStatus={loginStatus} />,
+          element: <ProductDetail />,
         },
       ],
     },
     {
       path: '/login',
-      element: <Login setLoginStatus={setLoginStatus} />,
+      element: <Login />,
     },
   ]);
 
